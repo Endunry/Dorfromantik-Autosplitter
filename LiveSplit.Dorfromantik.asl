@@ -13,8 +13,6 @@ startup{
 
 start{
 
-    print("Current score: " + current.score);
-    print("Old score: " + old.score);
     if(current.score > 0 && old.score == 0){
         return true;
     }
@@ -22,15 +20,26 @@ start{
 }
 
 split{
-    print("Current score: " + current.score);
-    print("Old score: " + old.score);
-    if(current.score > 20){
+    
+    int pointGoal = 2000;
+    if (settings["fivek"]){
+        pointGoal = 5000;
+    }
+    if (settings["tenk"]){
+        pointGoal = 10000;
+    }
+    if (settings["t5k"]){
+        pointGoal = 25000;
+    }
+    if (current.score >= pointGoal){
         return true;
     }
+
+    
 }
 
 reset{
-        if(current.score == 0 && old.score > 0){
+    if(current.score == 0 && old.score > 0){
         return true;
     }
 }
