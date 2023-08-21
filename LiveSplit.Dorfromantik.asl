@@ -61,6 +61,9 @@ split{
 
 reset{
     if(current.score == 0 && old.score > 0){
+        if(settings["splitOnAll"]){
+            vars.currentGoal = 2000;
+        }
         return true;
     }
 }
