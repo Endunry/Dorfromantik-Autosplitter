@@ -1,6 +1,6 @@
 state("Dorfromantik")
 {
-    int score: "mono-2.0-bdwgc.dll", 0x0084B9D0, 0x20, 0x90, 0x300;
+    int score: "mono-2.0-bdwgc.dll", 0x00716040, 0x90, 0xB0, 0x40, 0x4EC;
 }
 
 startup{
@@ -12,14 +12,15 @@ startup{
 }
 
 start{
-
+    // Score = 0 is a new game, timer starts when first piece is placed
     if(current.score > 0 && old.score == 0){
         return true;
     }
-
+    
 }
 
 split{
+    
     
     int pointGoal = 2000;
     if (settings["fivek"]){
@@ -31,14 +32,16 @@ split{
     if (settings["t5k"]){
         pointGoal = 25000;
     }
+    
+    // If the score is reached, then split (or rather just stop the timer because it only has a single split)
     if (current.score >= pointGoal){
         return true;
     }
-
     
 }
 
 reset{
+    // If the score suddenly drops to 0, then a new game is created which is a game reset
     if(current.score == 0 && old.score > 0){
         return true;
     }
