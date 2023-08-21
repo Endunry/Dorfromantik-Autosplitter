@@ -16,6 +16,9 @@ startup{
 
 start{
     if(current.score > 0 && old.score == 0){
+        if(settings["splitOnAll"]){
+            vars.currentGoal = 2000;
+        }
         return true;
     }
 }
@@ -47,6 +50,8 @@ split{
                 vars.currentGoal = 10000;
             }else if(vars.currentGoal == 10000){
                 vars.currentGoal = 25000;
+            }else{
+                vars.currentGoal = 2000;
             }
             return true;
         }
@@ -61,9 +66,7 @@ split{
 
 reset{
     if(current.score == 0 && old.score > 0){
-        if(settings["splitOnAll"]){
-            vars.currentGoal = 2000;
-        }
+    
         return true;
     }
 }
