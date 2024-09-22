@@ -1,6 +1,6 @@
 state("Dorfromantik")
 {
-    int score: "mono-2.0-bdwgc.dll", 0x00716040, 0x90, 0xB0, 0x40, 0x4EC;
+    int score: "mono-2.0-bdwgc.dll", 0x0084B9A0, 0x148, 0x30, 0x100;
 }
 
 startup{
